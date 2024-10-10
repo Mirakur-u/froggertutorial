@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocq6vt7f5xto"]
+
+[ext_resource type="Script" path="res://Scripts/highway_lane.gd" id="1_fgblv"]
+
+[node name="HighwayLane" type="Node2D"]
+script = ExtResource("1_fgblv")

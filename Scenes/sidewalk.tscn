@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://0a6s8wwq1ul2"]
+
+[ext_resource type="Texture2D" uid="uid://jvilwtrb7jwn" path="res://Assets/Median.png" id="1_fsr5j"]
+
+[node name="Sidewalk" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(4, 4)
+texture = ExtResource("1_fsr5j")
+region_enabled = true
+region_rect = Rect2(0, 0, 260, 16)

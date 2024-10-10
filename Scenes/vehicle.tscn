@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://clpcbk1gn0745"]
+
+[ext_resource type="Script" path="res://Scripts/vehicle.gd" id="1_e06k0"]
+[ext_resource type="Texture2D" uid="uid://2kivbfkkseqp" path="res://Assets/Car1.png" id="1_yoebu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8fmt"]
+size = Vector2(66, 56)
+
+[node name="Vehicle" type="Area2D"]
+script = ExtResource("1_e06k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_yoebu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8fmt")
