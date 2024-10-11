@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bebumy0mjs3q0"]
+[gd_scene load_steps=12 format=3 uid="uid://bebumy0mjs3q0"]
 
+[ext_resource type="PackedScene" uid="uid://7dxlors875rk" path="res://Scenes/water.tscn" id="1_6kwrt"]
 [ext_resource type="PackedScene" uid="uid://0a6s8wwq1ul2" path="res://Scenes/sidewalk.tscn" id="1_m0km4"]
 [ext_resource type="PackedScene" uid="uid://dfe56hod47od8" path="res://Scenes/player.tscn" id="2_853pe"]
 [ext_resource type="PackedScene" uid="uid://cocq6vt7f5xto" path="res://Scenes/highway_lane.tscn" id="3_xqasq"]
@@ -8,8 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dtnoxntj3o375" path="res://Assets/Car2.png" id="5_6fepk"]
 [ext_resource type="Texture2D" uid="uid://bxib2fg0odslh" path="res://Assets/Car4.png" id="7_eml1n"]
 [ext_resource type="Texture2D" uid="uid://cmky0p6x7ys2j" path="res://Assets/Car5.png" id="8_r5vxo"]
+[ext_resource type="PackedScene" uid="uid://kdmhn8mlpulj" path="res://Scenes/water_lane.tscn" id="10_7shtv"]
+[ext_resource type="PackedScene" uid="uid://dy4p6cyll2yuf" path="res://Scenes/turtle_lane.tscn" id="11_wrtu1"]
 
 [node name="main" type="Node"]
+
+[node name="Water" parent="." instance=ExtResource("1_6kwrt")]
+position = Vector2(0, -184)
+scale = Vector2(13, 6)
 
 [node name="Sidewalk" parent="." instance=ExtResource("1_m0km4")]
 position = Vector2(0, 418)
@@ -60,3 +67,36 @@ vehicle_count = 2
 distance_between_vehicles = 230
 speed = 160
 movement_x_limit = -480
+
+[node name="WaterLanes" type="Node" parent="."]
+
+[node name="WaterLane" parent="WaterLanes" instance=ExtResource("10_7shtv")]
+position = Vector2(0, -30)
+logs_length = [2, 4, 6]
+distance_between_logs = 300
+speed = 250
+
+[node name="WaterLane2" parent="WaterLanes" instance=ExtResource("10_7shtv")]
+position = Vector2(0, -94)
+logs_length = [5, 3]
+movement_x_limit = -720
+movement_direction = -1
+
+[node name="WaterLane3" parent="WaterLanes" instance=ExtResource("10_7shtv")]
+position = Vector2(0, -158)
+
+[node name="WaterLane4" parent="WaterLanes" instance=ExtResource("10_7shtv")]
+position = Vector2(0, -286)
+logs_length = [4, 3, 4]
+distance_between_logs = 100
+speed = 150
+
+[node name="TurtleLane" parent="WaterLanes" instance=ExtResource("11_wrtu1")]
+position = Vector2(0, -350)
+
+[node name="TurtleLane2" parent="WaterLanes" instance=ExtResource("11_wrtu1")]
+position = Vector2(0, -222)
+distance_between_sections = 80
+speed = 175
+turtle_sections_lengths = [3, 2, 2]
+movement_x_limit = 480
