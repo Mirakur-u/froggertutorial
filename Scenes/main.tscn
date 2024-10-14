@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bebumy0mjs3q0"]
+[gd_scene load_steps=17 format=3 uid="uid://bebumy0mjs3q0"]
 
 [ext_resource type="PackedScene" uid="uid://7dxlors875rk" path="res://Scenes/water.tscn" id="1_6kwrt"]
 [ext_resource type="PackedScene" uid="uid://0a6s8wwq1ul2" path="res://Scenes/sidewalk.tscn" id="1_m0km4"]
 [ext_resource type="PackedScene" uid="uid://dfe56hod47od8" path="res://Scenes/player.tscn" id="2_853pe"]
 [ext_resource type="PackedScene" uid="uid://cocq6vt7f5xto" path="res://Scenes/highway_lane.tscn" id="3_xqasq"]
+[ext_resource type="Script" path="res://Scripts/highway_lanes.gd" id="4_4xn8y"]
 [ext_resource type="Texture2D" uid="uid://2kivbfkkseqp" path="res://Assets/Car1.png" id="4_hei4b"]
 [ext_resource type="Texture2D" uid="uid://0c3xe034mkdn" path="res://Assets/Car3.png" id="4_sdmxl"]
 [ext_resource type="Texture2D" uid="uid://dtnoxntj3o375" path="res://Assets/Car2.png" id="5_6fepk"]
@@ -11,8 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cmky0p6x7ys2j" path="res://Assets/Car5.png" id="8_r5vxo"]
 [ext_resource type="PackedScene" uid="uid://kdmhn8mlpulj" path="res://Scenes/water_lane.tscn" id="10_7shtv"]
 [ext_resource type="PackedScene" uid="uid://dy4p6cyll2yuf" path="res://Scenes/turtle_lane.tscn" id="11_wrtu1"]
+[ext_resource type="Script" path="res://Scripts/game_state_manager.gd" id="13_cxh24"]
+[ext_resource type="PackedScene" uid="uid://ck0dpu0w1eqoh" path="res://Scenes/home_slot.tscn" id="14_2ln8d"]
+[ext_resource type="Script" path="res://Scripts/home_slots.gd" id="14_pyfv5"]
+[ext_resource type="PackedScene" uid="uid://cwluuow7orvg0" path="res://Scenes/ui.tscn" id="16_7851x"]
 
 [node name="main" type="Node"]
+
+[node name="UI" parent="." instance=ExtResource("16_7851x")]
 
 [node name="Water" parent="." instance=ExtResource("1_6kwrt")]
 position = Vector2(0, -184)
@@ -30,6 +37,7 @@ position = Vector2(0, 34)
 position = Vector2(0, 418)
 
 [node name="HighwayLanes" type="Node" parent="."]
+script = ExtResource("4_4xn8y")
 
 [node name="HighwayLane" parent="HighwayLanes" instance=ExtResource("3_xqasq")]
 position = Vector2(0, 364)
@@ -100,3 +108,29 @@ distance_between_sections = 80
 speed = 175
 turtle_sections_lengths = [3, 2, 2]
 movement_x_limit = 480
+
+[node name="GameStateManager" type="Node" parent="."]
+script = ExtResource("13_cxh24")
+
+[node name="HomeSlots" type="Node" parent="."]
+script = ExtResource("14_pyfv5")
+
+[node name="HomeSlot" parent="HomeSlots" instance=ExtResource("14_2ln8d")]
+position = Vector2(-320, -412)
+scale = Vector2(4, 4)
+
+[node name="HomeSlot2" parent="HomeSlots" instance=ExtResource("14_2ln8d")]
+position = Vector2(-128, -412)
+scale = Vector2(4, 4)
+
+[node name="HomeSlot3" parent="HomeSlots" instance=ExtResource("14_2ln8d")]
+position = Vector2(128, -412)
+scale = Vector2(4, 4)
+
+[node name="HomeSlot4" parent="HomeSlots" instance=ExtResource("14_2ln8d")]
+position = Vector2(320, -412)
+scale = Vector2(4, 4)
+
+[node name="HomeSlot5" parent="HomeSlots" instance=ExtResource("14_2ln8d")]
+position = Vector2(0, -401)
+scale = Vector2(3, 3)

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwluuow7orvg0"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_l175x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v56rm"]
+bg_color = Color(0.694517, 0.106162, 0.129066, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joprk"]
+bg_color = Color(0.0755298, 0.614134, 0.196685, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_115pr"]
+bg_color = Color(0.170658, 0.680558, 0.678638, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_naxhr"]
+bg_color = Color(0.972704, 0.37374, 0.331857, 1)
+
+[sub_resource type="Theme" id="Theme_of3if"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_115pr")
+Red/base_type = &"PanelContainer"
+Red/styles/panel = SubResource("StyleBoxFlat_naxhr")
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_l175x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="LivesContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/TimerContainer"]
+layout_mode = 2
+text = "Time:"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/TimerContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_v56rm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_joprk")
+max_value = 30.0
+value = 30.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme = SubResource("Theme_of3if")
+theme_type_variation = &"Red"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="GameResultLabel" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="TimeoutTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

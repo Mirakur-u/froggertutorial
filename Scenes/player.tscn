@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="Player" type="Area2D"]
+z_index = 1
 scale = Vector2(4, 4)
 script = ExtResource("1_oqa0w")
 
@@ -59,3 +60,9 @@ shape = SubResource("RectangleShape2D_jcctr")
 libraries = {
 "": SubResource("AnimationLibrary_dfkic")
 }
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
